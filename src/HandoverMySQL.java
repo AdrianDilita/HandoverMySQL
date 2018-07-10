@@ -10,7 +10,7 @@ public class HandoverMySQL {
             String[] tokens = userinput.nextLine().split("\\s");
             String arrays = Arrays.toString(tokens);
                     String bracketremove = arrays.replaceAll("\\[", "").replaceAll("\\]",""); //Replace brackets from array
-                    String commaremove = bracketremove.replaceAll ("\\,", ""); //Replace commas from array
+                    String commaremove = bracketremove.replaceAll ("\\,", "");  //Replace commas from array
                     String nolockremove = commaremove.replaceFirst ("with \\(nolock\\)|(nolock)|\\(NOLOCK\\)|(NOLOCK)","");
                     String commentblockadd = nolockremove.replaceFirst(" ", System.lineSeparator() + "                        updated for v0.06                " + System.lineSeparator());
             System.out.println(newLine + commentblockadd);

@@ -10,7 +10,7 @@ public class HandoverMySQL {
         String nolockremove = newstring.replaceAll("with \\(nolock\\)|(nolock)}", "");
         String commentblockadd = nolockremove.replaceFirst(" ", System.lineSeparator() + " /*                                           updated for v0.06               */ " + System.lineSeparator());
         while (userinput.hasNextLine()) {
-            System.out.println(userinput.nextLine()); //comment
+            System.out.println(userinput.nextLine());
         }
         System.out.println(commentblockadd);
     }

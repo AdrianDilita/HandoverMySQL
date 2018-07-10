@@ -1,4 +1,4 @@
-import java.io.FileNotFoundException;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class HandoverMySQL {
@@ -6,13 +6,15 @@ public class HandoverMySQL {
         String newLine = System.getProperty("line.separator"); //Define new line for the welcome message
         System.out.print("Please enter your SQL code..." + newLine);
         Scanner userinput = new Scanner(System.in);
-        String newstring = userinput.nextLine();
-        String nolockremove = newstring.replaceAll("with \\(nolock\\)|(nolock)}", "");
-        String commentblockadd = nolockremove.replaceFirst(" ", System.lineSeparator() + " /*                                           updated for v0.06               */ " + System.lineSeparator());
         while (userinput.hasNextLine()) {
-            System.out.println(userinput.nextLine());
+            String[] tokens = userinput.nextLine().split("\\s");
+            String arrays = Arrays.toString(tokens);
+                    String bracketremove = arrays.replaceAll("\\[", "").replaceAll("\\]",""); //Replace brackets from array
+                    String commaremove = bracketremove.replaceAll ("\\,", ""); //Replace commas from array
+                    String nolockremove = commaremove.replaceFirst ("with \\(nolock\\)|(nolock)|\\(NOLOCK\\)|(NOLOCK)","");
+                    String commentblockadd = nolockremove.replaceFirst(" ", System.lineSeparator() + "                        updated for v0.06                " + System.lineSeparator());
+            System.out.println(newLine + commentblockadd);
         }
-        System.out.println(commentblockadd);
+        userinput.close();
     }
 }
-
